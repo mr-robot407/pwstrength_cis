@@ -4,8 +4,7 @@
 
 ### Use of the Project:
 
-<p>User enters a password, the app shows weak password for just letters, average password for letters and numbers and strong password for letters, numbers and special charactersfrom flask import Flask. app = Flask( name ). @app.route('/') def index():
-return 'Hello World'. app.run(host='127.0.0.1', port=80).</p>
+<p>User enters a password, the app shows weak password for just letters, average password for letters and numbers and strong password for letters, numbers and special characters.</p>
 
 <h3>Used Technologies</h3>
 <ul>
