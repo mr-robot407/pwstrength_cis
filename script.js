@@ -1,10 +1,11 @@
 // const indicator = document.querySelector(".indicator");
 const input = document.querySelector(".input");
-const showBtn = document.querySelector(".showBtn")
+const showBtn = document.querySelector(".showBtn");
 const weak = document.querySelector(".weak");
 const medium = document.querySelector(".medium");
 const strong = document.querySelector(".strong");
 const text = document.querySelector(".text");
+const lenErr = document.querySelector(".lenText");
 
 let regExpWeak = /[a-z]/;
 let regExpMedium = /\d+/;
@@ -13,12 +14,19 @@ let regExpStrong = /.[!,@,#,$,%,^,&,*,(,)]/;
 
 
 document.getElementById("trigger").addEventListener("keyup", function() {
-	
+
+	if (input.value.length < 8) no = 4;
+	if (input.value.length > 32) no = 5;
+
 	if (input.value.length <= 3 && (input.value.match(regExpWeak) || input.value.match(regExpMedium) || input.value.match(regExpStrong))) no = 1;
 
 	if (input.value.length >= 6 && ((input.value.match(regExpWeak) && input.value.match(regExpMedium)) || (input.value.match(regExpMedium) && input.value.match(regExpStrong)) || (input.value.match(regExpWeak) && input.value.match(regExpStrong)))) no = 2;
 
 	if (input.value.length >= 6 && input.value.match(regExpWeak) && input.value.match(regExpMedium) && input.value.match(regExpStrong)) no = 3;
+
+	
+
+
 
 	if (no == 1) {
 		weak.classList.add("active");
@@ -46,6 +54,19 @@ document.getElementById("trigger").addEventListener("keyup", function() {
 		strong.classList.remove("active");
 		text.classList.remove("strong");
 	}
+
+	if (no == 4) {
+		lenErr.textContent = "Length should be greater than 8";
+	} else {
+		lenErr.textContent = " ";
+	}
+	if (no == 5) {
+		lenErr.textContent = "Length should be less than 32";
+	} else {
+		lenErr.textContent = " ";
+	}
+
+	console.log(input.value);
 
 	showBtn.style.display = "block";
 	showBtn.onclick = function() {
